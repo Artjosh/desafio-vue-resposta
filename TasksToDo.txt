@@ -1,0 +1,92 @@
+Introdução
+Este documento tem como objetivo fornecer uma orientação completa sobre as melhores práticas de organização e desenvolvimento para o projeto Vue.js, focando em aspectos estruturais, funcionais e de refatoração do código legado. Ele também inclui uma análise detalhada das funcionalidades existentes e pendentes, além de propor um plano de implementação para futuras melhorias.
+
+Estrutura Organizacional das Pastas
+1. Components
+
+Função: Armazenar componentes Vue reutilizáveis e não reutilizáveis. Esses componentes encapsulam tanto a lógica específica quanto os templates (HTML). Scripts não reutilizáveis devem ser colocados diretamente dentro do componente, enquanto scripts reutilizáveis devem ser colocados na pasta /scripts e organizados por tipo de lógica.
+Conteúdo: Componentes Vue que representam pequenas partes reutilizáveis da interface, como botões, modais, etc.
+2. Pages
+
+Função: Definir as diferentes páginas da aplicação e suas respectivas rotas.
+Conteúdo: Arquivos Vue que representam páginas completas da aplicação, como a página inicial, página de perfil, etc.
+3. Hooks e Lógicas Reutilizáveis
+
+Função: Armazenar hooks e funções reutilizáveis que encapsulam lógica reutilizável, como interações com APIs, autenticação, etc.
+Conteúdo: Funções JavaScript que podem ser importadas e usadas em múltiplos componentes.
+4. Store
+
+Função: Gerenciamento de estado global da aplicação utilizando uma biblioteca como Vuex.
+Conteúdo: Módulos Vuex, ações, mutações e getters para gerenciamento centralizado do estado da aplicação.
+5. Middlewares
+
+Função: Middleware para autenticação e autorização, utilizando tokens JWT e conexões WebSocket.
+Conteúdo: Arquivos JavaScript que contêm lógica para manipulação de autenticação, autorização, logging e gerenciamento de erros.
+6. Tests
+
+Função: Organizar os testes da aplicação em três categorias principais.
+Unitários: Testes focados em funções individuais.
+Interface: Testes de componentes visuais e interações.
+End-to-End: Testes completos da aplicação, simulando o comportamento do usuário.
+Conteúdo: Scripts de teste organizados em pastas de acordo com o tipo de teste (unitário, interface, end-to-end).
+7. CSS/XCSS e Tailwind
+
+Função: Utilizar CSS modularizado para cada componente e centralizar estilos globais em arquivos específicos. Considerar a adoção de frameworks como Tailwind para facilitar o desenvolvimento e manutenção dos estilos.
+Conteúdo: Arquivos CSS organizados para estilos globais e específicos de componentes.
+Análise do Projeto Atual
+Funcionalidades Existentes
+
+Descrição: Atualmente, a aplicação possui funcionalidades básicas para exibição, customização e ação de tags em imagens de produtos. Essas funcionalidades incluem a alteração de cores, tamanhos e posições de elementos, bem como a adição de textos e ícones.
+Funcionalidades Pendentes
+
+Listagem:
+Implementação completa dos menus dropdown.
+Integração de funcionalidades de customização de tags com a API backend.
+Adição de validação e mensagens de erro nos formulários.
+Funcionalidades Não Funcionais
+
+Identificação:
+Vários componentes de input e menus dropdown ainda não estão operacionais.
+Falta de integração com serviços externos, como APIs de autenticação e dados de produtos.
+Refatoração e Migração
+Motivação
+
+Por que refatorar?: Melhorar a manutenção do código, utilizar recursos modernos do Vue.js e eliminar dependências de código legado.
+Funções do scripts/index.js
+
+Lista das Funções a Serem Migradas:
+initCustom
+changeAlign
+handleImageChange
+Estratégia de Migração: Reescrever essas funções utilizando a reatividade e composição de componentes do Vue.js, separando as lógicas reutilizáveis em arquivos distintos dentro da pasta /scripts.
+Discussão com Gestores e Clientes
+Objetivos
+
+Identificar Necessidades e Requisitos: Reunir informações sobre as necessidades dos usuários e requisitos do projeto para garantir que todas as funcionalidades importantes sejam implementadas.
+Processo
+
+Métodos de Coleta de Informações:
+Entrevistas com stakeholders.
+Sessões de brainstorming com a equipe de desenvolvimento.
+Análise de feedback de usuários.
+Estrutura do Backend e Comunicação com Frontend
+Estratégias de Renderização
+
+CSR, SPA, SSR, SSG, ISR:
+CSR (Client Side Rendering): Adequado para aplicações com alta interatividade e menos preocupações com SEO.
+SPA (Single Page Application): Utilizado para melhorar a experiência do usuário através de navegação mais rápida.
+SSR (Server Side Rendering): Ideal para aplicações onde o SEO é crucial e a performance inicial é importante.
+SSG (Static Site Generation): Perfeito para sites com conteúdo estático que não muda com frequência.
+ISR (Incremental Site Regeneration): Combina os benefícios do SSG com a capacidade de atualizar páginas dinamicamente.
+Estrutura de API e Rotas
+
+Boas Práticas:
+Organização das rotas de API de maneira modular.
+Implementação de autenticação e autorização robusta.
+Uso de middlewares para gerenciamento de erros e logs.
+Futuras Implementações
+Bibliotecas de Renderização 3D
+
+Exemplo: Utilização de three.js para renderizar modelos 3D de produtos, permitindo uma visualização interativa e realista.
+Conclusão e Próximos Passos
+Este documento delineia uma abordagem estruturada para a organização do projeto, refatoração de código legado e implementação de novas funcionalidades. A colaboração contínua com os gestores e clientes, aliada à adoção de boas práticas de desenvolvimento, garantirá que a aplicação atenda aos requisitos e expectativas dos usuários finais. A implementação de bibliotecas modernas e a consideração de estratégias de renderização adequadas proporcionarão uma base sólida para o futuro desenvolvimento e manutenção da aplicação.
